@@ -10,6 +10,7 @@
           <thead class="head_data">
             <tr>
               <th>ID</th>
+              <th>image</th>
               <th>商品名</th>
               <th>税抜価格</th>
               <th>ジャンル</th>
@@ -21,6 +22,7 @@
             <% @items.each do |item| %>
             <tr>
               <td><%= item.id %></td>
+              <td><%= attachment_image_tag item, :image, format: 'png', fallback: "no_image.jpg", size: "50x50" %> </td>
               <td><%= link_to item.name, admins_item_path(item.id) %></td>
               <td class="price"><%= item.price.to_s(:delimited) %></td>
               <td><%= item.genre.name %></td>

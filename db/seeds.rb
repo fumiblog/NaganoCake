@@ -14,6 +14,6 @@
 #             admin: true)
 
 Admin.create!(
-   name: 'admins',
+   name: 'admins'
    email: 'admins@gmail.com',
    password: 'admins')
