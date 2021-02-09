@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs">
+    
       <div class="function_title">
         <h2>注文履歴詳細</h2>
       </div>
@@ -8,10 +8,24 @@
       <div class="table table-striped">
         注文情報
         <div>
-          <div>注文日:<%= @order.updated_at.strftime('%Y/%m/%d') %></div>
-          <div>配送先:<%= @order.postal_code %></br><%= @order.address %></br><%= @order.name %></div>
-          <div>支払方法:<%= @order.payment_method_i18n %></div>
-          <div>ステータス:<%= @order.status_i18n %></div>
+          <div>
+            注文日:
+            <%= @order.updated_at.strftime('%Y年%m月%d日') %>
+          </div>
+          <div>
+            配送先:
+            <%= @order.postal_code %></br>
+            <%= @order.address %></br>
+            <%= @order.name %>
+          </div>
+          <div>
+            支払方法:
+            <%= @order.payment_method_i18n %>
+          </div>
+          <div>
+            ステータス:
+            <%= @order.status_i18n %>
+          </div>
         </div>
       </div>
       <table class="table table-striped">
@@ -25,7 +39,7 @@
 
           </tr>
         </thead>
-        <tbody class="history">
+        <tbody class="order_detail">
 
           <% @order_details.each do |f| %>
           <tr>
@@ -45,5 +59,6 @@
 
       </div>
 
-    </div>
+    
   </div>
+</div>
