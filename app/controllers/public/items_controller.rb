@@ -3,13 +3,12 @@ class Public::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @items = Item.all
-    # binding.pry
-    # if genre_id?
-    #   @items = genre_id.items
-    # else
-    #   @items = Item.all
-    # end
+    # byebug
+    if params[:genre_id] === nil
+      @items = Item.all
+    else
+      @items = Item.where(genre_id: params[:genre_id])
+    end
   end
 
   def edit
