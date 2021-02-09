@@ -2,9 +2,12 @@ class Public::HomesController < ApplicationController
 
   def top
     @items = Item.all
-    # binding.pry
-    @order_details =   OrderDetail.group(:item_id).order('count(item_id) desc').limit(3) #.pluck(:item_id)
-    # byebug
+    if params[:genre_id] === nil
+      @order_details =   OrderDetail.group(:item_id).order('count(item_id) desc').limit(3)
+    else
+      # byebug
+      @order_details = OrderDetail.where.Item.where(params[:genre_id])
+    end
     @genres = Genre.all
   end
 

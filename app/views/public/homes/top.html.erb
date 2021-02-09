@@ -1,45 +1,59 @@
-<div class="container">
+<div class="container-fluid">
+  <div class="main_mes">
+    <p><h1>ようこそ！ながのケーキへ</h1></p>
+    <p> おいしいを全国へお届けします。ご注文をどうぞ</p>
+  </div>
   <div class="row">
-    <div class="col-md-4">
-      <h3>ジャンル検索</h3>
+    <div class="col-md-3">
       <table class="table table-striped">
         <tr>
           <th>ジャンル</th>
         </tr>
         <% @genres.each do |genre| %>
         <tr>
-          <td><%= link_to genre.name, public_items_path %></td>
+          <td><%= link_to genre.name, root_path(:genre_id => genre.id) %></td>
         </tr>
         <% end %>
       </table>
     </div>
-    <div class="col-md-8">
-      <h3></h3>
-      <div class="cakeimage"></br></br></br>
-        <div class="overview">
-          ようこそ、NaganoCakeへ！</br>
-          このサイトは、ケーキ販売のECサイトになります。</br>
-          会員でない方も商品の閲覧はできますが、</br>
-          購入には会員登録が必要になります。
+    <div class="col-md-9">
+      <div id="carouselsample-1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/cake.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/coffee4.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/cake3.png" class="d-block w-100" alt="...">
+          </div>
         </div>
       </div>
-      <div class="container">
+    </div>
+    <div class="container_card">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
         <% @order_details.each do |order| %>
-        <div class="row row-cols-1 row-cols-md3 g-4">
           <div class="col">
-            <div class="card h-100">
-              <%= attachment_image_tag order.item, :image, format: 'png', fallback: "no_image.jpg", class: "card-img-top", size: "200x200" %>
+            <div class="card h-90">
+              <%= attachment_image_tag order.item, :image, format: 'png', fallback: "no_image.jpg", class: "card-img-top" %>
               <div class="card-body">
-                <h4 class="card-title"><%= order.item.name %></h4>
+                <h5 class="card-title"><%= order.item.name %></h5>
                 <p class="card-text"><%= order.item.introduction %></p>
               </div>
               <div class="card-footer">
-                <div class="text-muted"><%= (order.item.price*1.1).floor %>円</div>
+                <small class="text-muted"><%= (order.item.price*1.1).floor %>円</small>
               </div>
             </div>
           </div>
-        </div>
         <% end %>
       </div>
+    </div>
   </div>
 </div>
+
+  
+
+
+
+
