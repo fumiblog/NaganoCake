@@ -33,19 +33,22 @@
     </div>
     <div class="container_card">
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <% @order_details.each do |order| %>
-          <div class="col">
-            <div class="card h-90">
-              <%= attachment_image_tag order.item, :image, format: 'png', fallback: "no_image.jpg", class: "card-img-top" %>
-              <div class="card-body">
-                <h5 class="card-title"><%= order.item.name %></h5>
-                <p class="card-text"><%= order.item.introduction %></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted"><%= (order.item.price*1.1).floor %>円</small>
+        <% @order_details.each_with_index do |order, i| %>
+          <%= link_to new_customer_session_path do %>
+            <div class="col">
+              <div class="card h-90">
+                <%= attachment_image_tag order.item, :image, format: 'png', fallback: "no_image.jpg", class: "card-img-top" %>
+                <div class="card-body">
+                  <h5 class="card-title">🌟売筋<%= i + 1 %>位🌟</h5>
+                  <h4 class="card-title"><%= order.item.name %></h4>
+                  <p class="card-text"><%= order.item.introduction %></p>
+                </div>
+                <div class="card-footer">
+                  <%= (order.item.price*1.1).floor %>円
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
